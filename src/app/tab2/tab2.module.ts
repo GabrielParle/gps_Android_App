@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { RefreshListComponent } from './refresh-list/refresh-list.component'
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
@@ -15,7 +16,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule
+
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, RefreshListComponent]
 })
 export class Tab2PageModule {}

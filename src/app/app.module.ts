@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { GpxService } from './service/gpx.service';
+import { DistanceService } from './service/distance.service';
+
+
+
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -16,6 +21,8 @@ import { AppComponent } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
+    GpxService,
+    DistanceService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

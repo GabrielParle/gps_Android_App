@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title color="primary">
+      Record Rides
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,83 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        <ion-button color="success" (click)="locationGetter()">Start Gps<ion-icon name="play-outline"></ion-icon> </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button  color="warning" (click)="locationStopper()">Stop Gps<ion-icon name="pause-outline"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="tertiary" (click)="getloc()">Get Coordinates</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <div>
+          <ion-button *ngIf="(saveas === 0)" color="primary" (click)="saveAs()">Save Gps<ion-icon name="save-outline"></ion-icon></ion-button>
+          <ion-input *ngIf="(saveas === 1)" type="secondary" [(ngModel)]="gpxName" placeholder="Enter GPS Name"></ion-input>
+          <ion-button *ngIf="(saveas === 1)"  color="primary" (click)="saving()">Save Gps<ion-icon name="save-outline"></ion-icon></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <ion-card>
+<ion-card-header >
+
+  <ion-card-title color="secondary" >coordinates</ion-card-title>
+  <ion-card-subtitle *ngIf="this.location">{{ this.location.lat }}, {{ this.location.lon }}</ion-card-subtitle>
+  <ion-card-subtitle *ngIf="this.time ==nul">n/a</ion-card-subtitle>
+</ion-card-header>
+</ion-card>
+
+<ion-grid id="output">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+        <ion-card-header >
+          <ion-card-title color="secondary">Elevation</ion-card-title>
+          </ion-card-header>
+          <ion-card-subtitle *ngIf="this.location"> {{ this.location.ele }}</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="this.location ==nul">n/a</ion-card-subtitle>
+          </ion-card>
+
+      </ion-col>
+      <ion-col>
+        <ion-card>
+        <ion-card-header >
+          <ion-card-title color="secondary">Speed</ion-card-title>
+          </ion-card-header>
+          <ion-card-subtitle *ngIf="this.speed"> {{ this.speed }}</ion-card-subtitle>
+            </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+        <ion-card-header >
+          <ion-card-title color="secondary">Distance</ion-card-title>
+          </ion-card-header>
+          <ion-card-subtitle *ngIf="this.dist"> {{ this.dist }}</ion-card-subtitle>
+            </ion-card>
+
+      </ion-col>
+      <ion-col>
+        <ion-card>
+        <ion-card-header >
+        <ion-card-title color="secondary">Workout Time</ion-card-title>
+        </ion-card-header>
+        <ion-card-subtitle>{{ this.time }} </ion-card-subtitle>
+        <ion-card-subtitle *ngIf="this.time ==nul">n/a</ion-card-subtitle>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
 </ion-content>
